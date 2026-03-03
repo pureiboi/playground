@@ -1,4 +1,5 @@
 name: GitHub Actions Demo
+# syntax https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
 # github context https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context
 
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
@@ -30,6 +31,8 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   tag:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - uses: actions/checkout@v4
       - name: Bump version and push tag
