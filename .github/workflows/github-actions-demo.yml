@@ -1,10 +1,12 @@
 name: GitHub Actions Demo
+# github context https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context
+
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# supported events
-# https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+# supported events https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
 on: [push]
 jobs:
   Explore-GitHub-Actions:
+    # The type of runner that the job will run on ref https://github.com/actions/runner-images?tab=readme-ov-file
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -26,3 +28,12 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
