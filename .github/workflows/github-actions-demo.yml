@@ -1,5 +1,7 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# supported events
+# https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -16,3 +18,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  test:
+    runs-on: ubuntu-slim
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
