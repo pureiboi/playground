@@ -31,8 +31,8 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   tag:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write
+    permissions: write-all
+
     steps:
       - uses: actions/checkout@v4
       - name: Bump version and push tag
